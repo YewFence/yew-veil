@@ -30,7 +30,9 @@
    TS_HOSTNAME=my-app             # 设备名
    TS_TAILNET=your-tailnet.ts.net # Tailnet 域名
    PORT=80                        # 主服务端口
-   COMPOSE_FILE=docker-compose.yml:docker-compose.ts.override.yml:docker-compose.override.yml
+   # 若你的项目有override，请自行添加，若无则不需要
+   COMPOSE_FILE=docker-compose.yml:docker-compose.ts.override.
+   yml:docker-compose.override.yml
    ```
 
 4. 启动服务：
