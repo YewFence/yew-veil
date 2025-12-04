@@ -10,7 +10,7 @@ services:
 
   ts-sidecar:
     image: tailscale/tailscale:latest
-    container_name: tailscale-sidecar
+    container_name: ${TS_HOSTNAME:-ts-sidecar}-ts-sidecar
     hostname: ${TS_HOSTNAME:-ts-sidecar}
     environment:
       - TS_AUTHKEY=${TS_AUTHKEY}
