@@ -43,14 +43,14 @@
    https://<TS_HOSTNAME>.<TS_TAILNET>
    ```
 
-## 使用方式
+## 更多的自定义方式
 
-通过环境变量自定义访问方式，请参考[环境变量示例文件](.env.example)
+通过环境变量自定义访问方式，详细说明请参考[环境变量示例文件](.env.example)
 
 ### 仅 Tailnet 访问（默认）
 
 ```env
-COMPOSE_FILE=docker-compose.yml:docker-compose.ts.override.yml
+docker-compose.yml:docker-compose.ts.override.yml:docker-compose.override.yml
 ```
 
 ### Tailnet + Nginx 公网反代
