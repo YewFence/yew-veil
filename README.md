@@ -19,10 +19,8 @@
    service:
      app: # 改成你的主服务名称
    ```
-> 自行按需同样修改 `docker-compose.nginx.override.yml`
 
 2. 复制`docker-compose.ts.override.yml` 、 `serve.json.template` 和示例环境变量内容到你的项目下
-> 自行按需复制 `docker-compose.nginx.override.yml`
 
 3. 编辑你的项目的 `.env` ，填入配置：
    ```env
