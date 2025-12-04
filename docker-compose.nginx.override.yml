@@ -7,7 +7,7 @@ services:
 
   ts-sidecar:
     networks:
-      - nginx-proxy-network
+      - nginx-proxy-network # 改成你的nginx网络名称
 
 networks:
   nginx-proxy-network:
