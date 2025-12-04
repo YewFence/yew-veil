@@ -1,0 +1,13 @@
+services:
+  # 你的主服务占位；只需加入到 tailscale 网络即可
+  app:
+    image: nginx:alpine
+    container_name: ts-app
+    restart: unless-stopped
+    # 示例：在容器内监听 8080（局域网/反代使用）
+    environment:
+      - TZ=UTC
+    command: ["sh", "-c", "echo '<h1>Tailscale Sidecar App</h1>' > /usr/share/nginx/html/index.html && nginx -g 'daemon off;'"]
+    # 业务卷配置（按需修改/删除）
+    volumes:
+      - ./html:/usr/share/nginx/html:rw

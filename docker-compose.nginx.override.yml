@@ -1,0 +1,14 @@
+# 适配 Nginx container 反代能力的 Tailscale Sidecar 扩展配置：同时公网与 Tailnet 访问
+services:
+  app:
+    network_mode: service:ts-sidecar
+    depends_on:
+      - ts-sidecar
+
+  ts-sidecar:
+    networks:
+      - nginx-proxy-network
+
+networks:
+  nginx-proxy-network:
+    external: true

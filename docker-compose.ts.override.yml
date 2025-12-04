@@ -1,0 +1,25 @@
+# Tailscale Sidecar 配置：仅 tailnet 访问
+services:
+  # 让主服务与 ts-sidecar 共用网络命名空间
+  app:
+    network_mode: service:ts-sidecar
+    depends_on:
+      - ts-sidecar
+
+  ts-sidecar:
+    image: tailscale/tailscale:latest
+    container_name: tailscale-sidecar
+    hostname: ${TS_HOSTNAME:-ts-sidecar}
+    environment:
+      - TS_AUTHKEY=${TS_AUTHKEY}
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_HOSTNAME=${TS_HOSTNAME:-ts-sidecar}
+      - TS_USERSPACE=true
+      - TS_SERVE_CONFIG=/config/serve.json
+      - PORT=${PORT:-80}
+      - TS_TAILNET=${TS_TAILNET}
+    volumes:
+      - ./tailscale-data:/var/lib/tailscale
+      - ./serve.json.template:/config/serve.json.template:ro
+    restart: unless-stopped
+    entrypoint: ["/bin/sh", "-c", "envsubst < /config/serve.json.template > /config/serve.json && exec /usr/local/bin/containerboot"]
