@@ -77,3 +77,7 @@ COMPOSE_FILE=docker-compose.yml:docker-compose.ts.override.yml:docker-compose.ng
 - 建议使用可复用（Reusable）+ 带标签（Tagged）的 Auth Key
 - sidecar 会自动取消主服务的端口映射，如需直接访问请自行修改
 - Tailscale 状态数据保存在 `./tailscale-data/` 目录
+
+## 许可证
+
+MIT License © YewFence
