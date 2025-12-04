@@ -2,6 +2,8 @@
 services:
   # 让主服务与 ts-sidecar 共用网络命名空间
   app:
+    # 取消端口映射：流量通过 Tailscale/Nginx 反代访问，无需直接暴露端口
+    ports: !reset [] # 如需直接访问主服务，可注释该行
     network_mode: service:ts-sidecar
     depends_on:
       - ts-sidecar
